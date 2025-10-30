@@ -1,88 +1,107 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org">
 
-<head th:replace="~{base::head}"></head>
+<head th:replace="~{base::head}">
+    <style>
+        /* Custom Blue Theme */
+        .text-primary-custom {
+            color: rgb(27, 109, 193) !important; /* blue tone */
+        }
+
+        .bg-primary-custom {
+            background-color: rgb(27, 109, 193) !important;
+        }
+
+        .btn-primary-custom {
+            background-color: rgb(27, 109, 193) !important;
+            border: none !important;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: rgb(20, 85, 150) !important;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, rgb(27, 109, 193), rgb(61, 139, 253)) !important;
+        }
+
+        a {
+            color: rgb(27, 109, 193);
+        }
+
+        a:hover {
+            color: rgb(20, 85, 150);
+        }
+    </style>
+</head>
 
 <body>
-	<!-- Navbar Start -->
-	<div th:replace="~{base::navbar}"></div>
-	<!-- Navbar End -->
+    <!-- Navbar Start -->
+    <div th:replace="~{base::navbar}"></div>
+    <!-- Navbar End -->
 
+    <!-- Page Header Start -->
+    <div th:replace="~{base::header(text='Success')}"></div>
+    <!-- Page Header End -->
 
-	<!-- Page Header Start -->
-	<div th:replace="~{base::header(text='Success')}"></div>
-	<!-- Page Header End -->
-
-
-
-<!-- Success Start -->
-<div class="container-fluid py-5 bg-light">
-    <div class="container">
-        <!-- Title -->
-        <div class="section-title text-center mb-5">
-            <h2 class="text-success">Booking Successful</h2>
-            <p class="lead">Thank you for your booking! Please find your invoice details below.</p>
+    <!-- Success Section Start -->
+    <section class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="text-primary-custom display-4">Booking Confirmed!</h1>
+            <p class="lead text-secondary">Thank you for your booking. Here’s your invoice and booking details.</p>
         </div>
 
-        <!-- Invoice Section -->
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card shadow border-0">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">Invoice</h5>
-                    </div>
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary bg-gradient-primary text-white text-center py-3">
+					    <h4 class="mb-0"><i class="bi bi-check-circle-fill me-2"></i>Invoice</h4>
+					</div>
+
                     <div class="card-body">
-                        <!-- Booking Info -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <p class="mb-1"><strong>Booking ID:</strong> <span th:text="${booked.id}">BK123456</span></p>
-                                <p class="mb-1"><strong>Name:</strong> <span th:text="${booked.name}">John Doe</span></p>
-                                <p class="mb-1"><strong>Email:</strong> <span th:text="${booked.email}">john@example.com</span></p>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <ul class="list-unstyled">
+                                    <li><strong>Booking ID:</strong> <span th:text="${booked.id}">BK123456</span></li>
+                                    <li><strong>Name:</strong> <span th:text="${booked.name}">John Doe</span></li>
+                                    <li><strong>Email:</strong> <span th:text="${booked.email}">john@example.com</span></li>
+                                </ul>
                             </div>
                             <div class="col-md-6">
-                                <p class="mb-1"><strong>Phone:</strong> <span th:text="${booked.phoneNumber}">+1 234 567 890</span></p>
-                                <p class="mb-1"><strong>Booking Date:</strong> <span th:text="${booked.date}">2025-09-11</span></p>
-                                <p class="mb-1"><strong>Booking Time:</strong> <span th:text="${booked.time}">10:00 AM</span></p>
+                                <ul class="list-unstyled">
+                                    <li><strong>Phone:</strong> <span th:text="${booked.phoneNumber}">+1 234 567 890</span></li>
+                                    <li><strong>Date:</strong> <span th:text="${booked.date}">2025-09-11</span></li>
+                                    <li><strong>Time:</strong> <span th:text="${booked.time}">10:00 AM</span></li>
+                                </ul>
                             </div>
                         </div>
 
-                        <!-- Optional: Payment or Service Info -->
-                        <!--
                         <hr>
-                        <p><strong>Service:</strong> <span th:text="${booked.service}">Premium Cleaning</span></p>
-                        <p><strong>Amount Paid:</strong> <span th:text="${booked.amount}">$150.00</span></p>
-                        -->
 
-                        <!-- Print Button -->
                         <div class="text-center mt-4">
-                            <button class="btn btn-outline-success" onclick="window.print()">
-                                <i class="bi bi-printer"></i> Print Invoice
+                            <button class="btn btn-primary-custom btn-lg" onclick="window.print()">
+                                <i class="bi bi-printer me-1"></i> Print Invoice
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Optional Footer -->
                 <div class="text-center text-muted small mt-4">
-                    <p>If you have any questions about your booking, please contact our support team.</p>
+                    <p>If you have any questions, please contact our support team at
+                        <a href="mailto:support@example.com">support@example.com</a>.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Success End -->
+    </section>
+    <!-- Success Section End -->
 
-	
+    <!-- Footer Start -->
+    <div th:replace="~{base::footer}"></div>
+    <!-- Footer End -->
 
-
-
-	<!-- Footer Start -->
-	<div th:replace="~{base::footer}"></div>
-	<!-- Footer End -->
-
-	<div th:replace="~{base::script}"></div>
+    <div th:replace="~{base::script}"></div>
 </body>
-
 </html>
