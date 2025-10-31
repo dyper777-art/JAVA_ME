@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name="tbl_booked_srey_vannarith")
+@Entity(name="tbl_booked_sen_rathana")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -25,4 +25,5 @@ public class Booked {
 	private int person;
 
 }
+
 
